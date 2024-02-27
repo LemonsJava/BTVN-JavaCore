@@ -22,11 +22,8 @@ public class LolService {
         System.out.println("Nhap thong tin doi G2:");
         G2Service teamG2 = new G2Service();
         ArrayList<Figure> lstG2 =  teamG2.saveG2(scanner);
-
         SummonRift summonRift = new SummonRift(lstT1, lstG2, time);
-
-
-
+        
         System.out.println("----------------");
         System.out.println("Thong tin tran dau la:");
         System.out.println(summonRift);
