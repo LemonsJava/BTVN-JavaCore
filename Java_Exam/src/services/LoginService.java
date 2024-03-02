@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 
 public class LoginService {
+
     public void login(Scanner scanner, ArrayList<Account> accounts) {
         if (!accounts.isEmpty()) {
             System.out.print("Username: ");
@@ -42,9 +43,7 @@ public class LoginService {
                 AccountService service = new AccountService();
                 Account account = service.createAccount(scanner, accounts);
             }
-            else return;
         }
-
     }
 }
 
