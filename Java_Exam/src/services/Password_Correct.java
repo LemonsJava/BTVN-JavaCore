@@ -40,7 +40,7 @@ public class Password_Correct {
         System.out.print("Mời bạn nhập Username mới: ");
         String newUsername = scanner.nextLine();
         AccountService service  = new AccountService();
-        while (!service.checkUsername(newUsername)) {
+        while (service.checkUsername(newUsername)) {
             newUsername = scanner.nextLine();
         }
         account.setUsername(newUsername);
@@ -50,7 +50,7 @@ public class Password_Correct {
         System.out.print("Mời bạn nhập Email mới: ");
         String newEmail = scanner.nextLine();
         AccountService service  = new AccountService();
-        while (!service.checkEmail(newEmail)) {
+        while (service.checkEmail(newEmail)) {
             newEmail = scanner.nextLine();
         }
         account.setEmail(newEmail);
@@ -60,7 +60,7 @@ public class Password_Correct {
         System.out.print("Mời bạn nhập mật khẩu mới: ");
         String newPassword = scanner.nextLine();
         AccountService service  = new AccountService();
-        while (!service.checkPassword(newPassword)) {
+        while (service.checkPassword(newPassword)) {
             newPassword = scanner.nextLine();
         }
         account.setPassword(newPassword);

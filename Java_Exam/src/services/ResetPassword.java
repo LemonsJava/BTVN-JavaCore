@@ -13,7 +13,7 @@ public class ResetPassword {
         if(account.getEmail().equals(email)) {
             System.out.print("Mời bạn nhập mật khẩu mới: ");
             password = scanner.nextLine();
-            while (!service.checkPassword(password)) {
+            while (service.checkPassword(password)) {
                 password = scanner.nextLine();
             }
             account.setPassword(password);

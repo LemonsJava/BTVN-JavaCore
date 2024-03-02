@@ -10,17 +10,17 @@ public class AccountService {
     public Account createAccount(Scanner scanner, ArrayList<Account> accounts) {
         System.out.print("Mời bạn nhập Username mới: ");
         String inputUsername = scanner.nextLine();
-        while(!checkUsername(inputUsername)){
+        while(checkUsername(inputUsername)){
             inputUsername = scanner.nextLine();
         }
         System.out.print("Mời bạn nhập mật khẩu mới (dài từ 7 đến 15 ký tự, chứa ít nhất 1 ký tự in hoa, 1 ký tự đặc biệt): ");
         String inputPassword = scanner.nextLine();
-        while(!checkPassword(inputPassword)){
+        while(checkPassword(inputPassword)){
             inputPassword = scanner.nextLine();
         }
         System.out.print("Mời bạn nhập Email: ");
         String inputEmail = scanner.nextLine();
-        while(!checkEmail(inputEmail)){
+        while(checkEmail(inputEmail)){
             inputEmail = scanner.nextLine();
         }
         if(accounts.isEmpty()) {
@@ -33,7 +33,7 @@ public class AccountService {
                     if (account.getUsername().equals(inputUsername)) {
                         System.out.print("Username đã được sử dụng! Vui lòng nhập Username khác: ");
                         inputUsername = scanner.nextLine();
-                        while (!checkUsername(inputUsername)){
+                        while (checkUsername(inputUsername)){
                             inputUsername = scanner.nextLine();
                         }
                     } else {
@@ -41,7 +41,7 @@ public class AccountService {
                             if (account.getEmail().equals(inputEmail)) {
                                 System.out.print("Email đã được sử dụng! Vui lòng nhập Email khác: ");
                                 inputEmail = scanner.nextLine();
-                                while (!checkEmail(inputEmail)){
+                                while (checkEmail(inputEmail)){
                                     inputEmail = scanner.nextLine();
                                 }
                             } else {
@@ -64,33 +64,33 @@ public class AccountService {
 
     public boolean checkUsername(String username) {
         Pattern p = Pattern.compile("^[0-9a-zA-Z_]+$");
-        if (p.matcher(username).matches()) {
-            return true;
-        }
-        else {
+        if (!p.matcher(username).matches()) {
             System.out.print("Username không hợp lệ! Mời nhập lại: ");
+            return true;
         }
-        return false;
+        else {
+            return false;
+        }
     }
-    public boolean checkEmail(String username) {
+    public boolean checkEmail(String email) {
         Pattern p = Pattern.compile("^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+.[a-zA-Z]{2,4}$");
-        if (p.matcher(username).matches()) {
-            return true;
-        }
-        else {
+        if (!p.matcher(email).matches()) {
             System.out.print("Email không hợp lệ! Mời nhập lại: ");
-        }
-        return false;
-    }
-    public boolean checkPassword(String username) {
-        Pattern p = Pattern.compile("^(?=.*[A-Z])(?=.*[@._,;-]).{7,15}$");
-        if (p.matcher(username).matches()) {
             return true;
         }
         else {
-            System.out.print("Mật khẩu không hợp lệ! Mời nhập lại: ");
+            return false;
         }
-        return false;
+    }
+    public boolean checkPassword(String password) {
+        Pattern p = Pattern.compile("^(?=.*[A-Z])(?=.*[@._,;-]).{7,15}$");
+        if (!p.matcher(password).matches()) {
+            System.out.print("Mật khẩu không hợp lệ! Mời nhập lại: ");
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 }

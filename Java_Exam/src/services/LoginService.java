@@ -41,8 +41,8 @@ public class LoginService {
             if(answer.equalsIgnoreCase("y")){
                 AccountService service = new AccountService();
                 Account account = service.createAccount(scanner, accounts);
-                accounts.add(account);
             }
+            else return;
         }
 
     }
