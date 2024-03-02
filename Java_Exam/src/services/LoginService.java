@@ -21,13 +21,12 @@ public class LoginService {
                             System.out.println("Chào mừng " + username + " đến với bình nguyên vô tận!");
                             Password_Correct service = new Password_Correct();
                             service.passwordCorrect(scanner, acc, accounts);
-                            break;
                         } else {
                             System.out.println("Mật khẩu không đúng!");
                             Password_Incorrect passwordIncorrect = new Password_Incorrect();
                             passwordIncorrect.passwordIncorrect(scanner, acc, accounts);
-                            break;
                         }
+                        break;
                     }
                 }
                 System.out.println("Vui lòng kiểm tra lại Username!");

@@ -21,8 +21,6 @@ public class Password_Incorrect {
                 case utils.Password_Incorrect.FORGET_PASSWORD:
                     ResetPassword resetPassword = new ResetPassword();
                     resetPassword.resetPassword(scanner, account);
-                    Controller controller = new Controller();
-                    controller.run(scanner, accounts);
                     break;
                 default:
                     System.out.println("Chức năng không hợp lệ!");

@@ -6,21 +6,42 @@ import java.util.Scanner;
 
 public class ResetPassword {
     public void resetPassword(Scanner scanner, Account account) {
-        String password;
         AccountService service = new AccountService();
-        System.out.println("Mời bạn nhập Email: ");
+        System.out.print("Mời bạn nhập Email: ");
         String email = scanner.nextLine();
-        if(account.getEmail().equals(email)) {
-            System.out.print("Mời bạn nhập mật khẩu mới: ");
-            password = scanner.nextLine();
-            while (service.checkPassword(password)) {
-                password = scanner.nextLine();
+        while (service.checkEmail(email)) {
+            email = scanner.nextLine();
+        }
+        while (true) {
+            if(account.getEmail().equals(email)) {
+                System.out.print("Mời bạn nhập mật khẩu mới: ");
+                String password = scanner.nextLine();
+                while (service.checkPassword(password)) {
+                    password = scanner.nextLine();
+                }
+                account.setPassword(password);
+                System.out.println("Đổi mật khẩu thành công!");
+                break;
             }
-            account.setPassword(password);
-            System.out.println("Đổi mật khẩu thành công!");
+            else {
+                while (true) {
+                    System.out.println("Email chưa được sử dụng!");
+                    System.out.println("Bạn có muốn nhập lại Email không?(y/n)");
+                    String answer = scanner.nextLine();
+                    if(answer.equals("y")) {
+                        System.out.print("Mời bạn nhập Email: ");
+                        email = scanner.nextLine();
+                        while (service.checkEmail(email)) {
+                            email = scanner.nextLine();
+                        }
+                        break;
+                    }
+                    else {
+                        return;
+                    }
+                }
+            }
         }
-        else {
-            System.out.println("Tài khoản chưa tồn tại!");
-        }
+
     }
 }
