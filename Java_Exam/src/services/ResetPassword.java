@@ -14,8 +14,8 @@ public class ResetPassword {
         }
         while (true) {
             if(account.getEmail().equals(email)) {
-                Password_Correct passwordCorrect = new Password_Correct();
-                passwordCorrect.changePassword(scanner,account);
+                AccountService accountService = new AccountService();
+                accountService.changePassword(scanner,account);
                 break;
             }
             else {

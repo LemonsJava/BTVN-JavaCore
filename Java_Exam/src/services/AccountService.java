@@ -87,4 +87,32 @@ public class AccountService {
         return false;
     }
 
+    public void changeUsername(Scanner scanner, Account account, ArrayList<Account> accounts) {
+        String newUsername;
+        do {
+            System.out.print("Mời bạn nhập Username mới: ");
+            newUsername = scanner.nextLine();
+        } while (checkUsername(newUsername) || isUsernameTaken(newUsername, accounts));
+        account.setUsername(newUsername);
+        System.out.println("Thay đổi Username thành công!");
+    }
+    public void changeEmail(Scanner scanner, Account account, ArrayList<Account> accounts) {
+        String newEmail;
+        do {
+            System.out.print("Mời bạn nhập Email mới: ");
+            newEmail = scanner.nextLine();
+        } while (checkEmail(newEmail) || isEmailTaken(newEmail, accounts));
+        account.setEmail(newEmail);
+        System.out.println("Thay đổi Email thành công!");
+    }
+    public void changePassword(Scanner scanner, Account account) {
+        String newPassword;
+        do {
+            System.out.print("Mời bạn nhập mật khẩu mới: ");
+            newPassword = scanner.nextLine();
+        } while (checkPassword(newPassword) || isPasswordTaken(newPassword, account));
+        account.setPassword(newPassword);
+        System.out.println("Thay đổi mật khẩu thành công!");
+    }
+
 }
