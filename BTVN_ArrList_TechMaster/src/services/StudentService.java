@@ -67,6 +67,7 @@ public class StudentService {
             if (lstStudent.get(i).getId() == idDel) {
                 lstStudent.remove(i);
                 System.out.println("Hoc vien da duoc xoa khoi danh sach.");
+                return;
             }
             else {
                 System.out.println("Hoc vien khong co trong danh sach !");
