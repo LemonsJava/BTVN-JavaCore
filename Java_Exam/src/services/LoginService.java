@@ -40,7 +40,7 @@ public class LoginService {
             String answer = scanner.nextLine();
             if(answer.equalsIgnoreCase("y")){
                 AccountService service = new AccountService();
-                Account account = service.createAccount(scanner, accounts);
+                accounts.add(service.createAccount(scanner, accounts));
             }
         }
     }

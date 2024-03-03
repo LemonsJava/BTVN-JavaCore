@@ -8,9 +8,7 @@ import java.util.regex.Pattern;
 
 public class AccountService {
     public Account createAccount(Scanner scanner, ArrayList<Account> accounts) {
-        String inputUsername;
-        String inputPassword;
-        String inputEmail;
+        String inputUsername, inputPassword, inputEmail;
 
         do {
             System.out.print("Mời bạn nhập Username mới: ");
@@ -83,7 +81,7 @@ public class AccountService {
     }
     public boolean isPasswordTaken(String password, Account account) {
         if (account.getPassword().equals(password)) {
-            System.out.println("Mật khẩu này hiện đang được sử dụng! Vui lòng nhập mật khẩu khác!");
+            System.out.println("Mật khẩu này đang được sử dụng! Vui lòng nhập mật khẩu khác!");
             return true;
         }
         return false;
