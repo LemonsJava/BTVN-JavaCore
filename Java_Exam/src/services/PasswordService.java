@@ -15,7 +15,7 @@ public class PasswordService {
     public void loginSusses(Scanner scanner, Account account, ArrayList<Account> accounts) {
         while (true) {
             MenuLoginSussess newMenu = new MenuLoginSussess();
-            newMenu.menuLoginCorrect();
+            newMenu.menuLoginSusses();
             System.out.print("Mời chọn chức năng: ");
             int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
@@ -43,7 +43,7 @@ public class PasswordService {
     public void loginFail(Scanner scanner, Account account, ArrayList<Account> accounts) {
         while (true) {
             MenuLoginFail menu = new MenuLoginFail();
-            menu.menuLoginIncorrect();
+            menu.menuLoginFail();
             System.out.print("Mời chọn chức năng: ");
             int option = Integer.parseInt(scanner.nextLine());
             switch (option) {

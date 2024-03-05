@@ -1,7 +1,7 @@
 package view;
 
 public class MenuLoginSussess {
-    public void menuLoginCorrect() {
+    public void menuLoginSusses() {
         System.out.println("1. Thay đổi username");
         System.out.println("2. Thay đổi email");
         System.out.println("3. Thay đổi mật khẩu");
