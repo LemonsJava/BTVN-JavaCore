@@ -19,12 +19,12 @@ public class LoginService {
                         String password = scanner.nextLine();
                         if (acc.getPassword().equals(password)) {
                             System.out.println("Chào mừng " + username + " đến với bình nguyên vô tận!");
-                            Password_Correct service = new Password_Correct();
-                            service.passwordCorrect(scanner, acc, accounts);
+                            PasswordService service = new PasswordService();
+                            service.loginSusses(scanner, acc, accounts);
                         } else {
                             System.out.println("Mật khẩu không đúng!");
-                            Password_Incorrect passwordIncorrect = new Password_Incorrect();
-                            passwordIncorrect.passwordIncorrect(scanner, acc, accounts);
+                            PasswordService passwordService = new PasswordService();
+                            passwordService.loginFail(scanner, acc, accounts);
                         }
                         break;
                     }

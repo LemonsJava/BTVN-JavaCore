@@ -1,6 +1,6 @@
 package view;
 
-public class Menu_Password_Correct {
+public class MenuLoginSussess {
     public void menuLoginCorrect() {
         System.out.println("1. Thay đổi username");
         System.out.println("2. Thay đổi email");

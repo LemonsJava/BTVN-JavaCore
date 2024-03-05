@@ -1,7 +1,7 @@
 package services;
 
 import entities.Account;
-import view.Menu_Home;
+import view.MenuHome;
 import utils.Home;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Controller {
     public void run(Scanner scanner, ArrayList<Account> accounts) {
         while (true) {
-            Menu_Home menuHome = new Menu_Home();
+            MenuHome menuHome = new MenuHome();
             menuHome.menuHome();
             System.out.print("Mời nhập lựa chọn: ");
             int option = Integer.parseInt(scanner.nextLine());

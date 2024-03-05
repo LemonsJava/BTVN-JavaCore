@@ -1,6 +1,6 @@
 package utils;
 
-public class Password_Correct {
+public class LoginSucces {
     public static final int CHANGE_USERNAME = 1;
     public static final int CHANGE_EMAIL = 2;
     public static final int CHANGE_PASSWORD = 3;
