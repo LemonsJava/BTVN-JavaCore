@@ -23,8 +23,8 @@ public class MenuMain {
         System.out.println("3. Them mot so tiet kiem moi");
         System.out.println("4. Xem danh sach khach hang");
         System.out.println("5. Xem danh sach ngan hang");
-        System.out.println("6. Xem danh sach so tiet kiem theo ten khach hang");
-        System.out.println("7. Xem danh sach so tiet kiem theo so tien da gui");
+        System.out.println("6. Sap xep danh sach so tiet kiem theo ten khach hang");
+        System.out.println("7. Sap xep danh sach so tiet kiem theo so tien da gui");
         System.out.println("8. Xem danh sach tong so tien da gui cua khach hang");
         System.out.println("9. Thoat chuong trinh");
     }
@@ -84,14 +84,14 @@ public class MenuMain {
                         System.out.println(bank);
                     }
                     break;
-                case MenuSeeMain.DISPLAY_SAVING_ACCOUNTS_BY_NAME:
+                case MenuSeeMain.SORT_SAVING_ACCOUNTS_BY_NAME:
                     if(savingAccounts.isEmpty()) {
                         System.out.println("Danh sach so tiet kiem rong!");
                         break;
                     }
                     savingAccoutService.sortByNameCustomer(savingAccounts);
                     break;
-                case MenuSeeMain.DISPLAY_SAVING_ACCOUNTS_BY_BALANCE:
+                case MenuSeeMain.SORT_SAVING_ACCOUNTS_BY_BALANCE:
                     if(savingAccounts.isEmpty()) {
                         System.out.println("Danh sach so tiet kiem rong!");
                         break;
@@ -100,6 +100,7 @@ public class MenuMain {
                     break;
                 case MenuSeeMain.DISPLAY_ALL_SAVINGS_OF_CUSTOMER:
                     customerService.displaySavingsOfCustomer(scanner, customers);
+                    break;
                 case MenuSeeMain.EXIT:
                     isRunning = false;
                     break;

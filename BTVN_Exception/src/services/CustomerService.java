@@ -40,11 +40,21 @@ public class CustomerService {
             System.out.println("Moi nhap ten khach hang can tim: ");
             String name = scanner.nextLine();
             Customer customer = findByName(name, customers);
-            for(SavingAccount saving : customer.getSavingAccounts()) {
-                System.out.println("Ban da gui so tien: " + saving.getBalance() + " - Tai ngan hang: " + saving.getBank().getName());
-                sum += saving.getBalance();
+            while (true) {
+                if(customer == null) {
+                    System.out.println("Khong tim thay khach hang co ten: " + name);
+                    System.out.println("Moi nhap lai ten khach hang: ");
+                    name = scanner.nextLine();
+                }
+                else {
+                    for(SavingAccount saving : customer.getSavingAccounts()) {
+                        System.out.println("Ban da gui so tien: " + saving.getBalance() + " - Tai ngan hang: " + saving.getBank().getName());
+                        sum += saving.getBalance();
+                    }
+                    System.out.println("Tong so tien da gui la: " + sum);
+                    break;
+                }
             }
-            System.out.println("Tong so tien da gui la: " + sum);
         }
     }
 }
