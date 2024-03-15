@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Customer {
     private static int autoIdCus;
-    private int id;
+    private String id;
     private String name;
     private String address;
     private String phoneNumber;
@@ -19,7 +19,7 @@ public class Customer {
         if(name == null || name.isEmpty() || address == null || address.isEmpty() || phoneNumber == null || phoneNumber.isEmpty()){
             throw new InvalidCustomerException("Invalid customer details");
         }
-        this.id = ++autoIdCus;
+        this.id =String.format("%05d", autoIdCus++);
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -35,10 +35,10 @@ public class Customer {
     }
 
     public String getId() {
-        return String.format("%05d", autoIdCus++);
+        return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
