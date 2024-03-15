@@ -7,7 +7,7 @@ import utils.TypeCustomer;
 import java.util.ArrayList;
 
 public class Customer {
-    private static int autoIdCus;
+    private static int autoIdCus = 1;
     private String id;
     private String name;
     private String address;
@@ -28,7 +28,7 @@ public class Customer {
     }
 
     public void addSavingsAccount(SavingAccount savingsAccount) throws MaxSavingsAccountException {
-        if (savingAccounts.size() >= 5) {
+        if (savingAccounts.size() > 5) {
             throw new MaxSavingsAccountException("Maximum limit of savings accounts reached");
         }
         savingAccounts.add(savingsAccount);

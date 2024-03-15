@@ -45,7 +45,7 @@ public class SavingAccount {
     @Override
     public String toString() {
         return "SavingAccount{" +
-               // "customer=" + customer +
+                "customer=" + customer.getName() +
                 ", bank=" + bank +
                 ", balance=" + balance +
                 '}';

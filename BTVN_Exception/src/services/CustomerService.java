@@ -41,7 +41,7 @@ public class CustomerService {
             String name = scanner.nextLine();
             Customer customer = findByName(name, customers);
             for(SavingAccount saving : customer.getSavingAccounts()) {
-                System.out.println(saving.getBalance());
+                System.out.println("Ban da gui so tien: " + saving.getBalance() + " - Tai ngan hang: " + saving.getBank().getName());
                 sum += saving.getBalance();
             }
             System.out.println("Tong so tien da gui la: " + sum);

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BankService {
-    public Bank createBank(Scanner scanner, ArrayList<Bank> banks) throws InvalidBankException {
+    public void createBank(Scanner scanner, ArrayList<Bank> banks) throws InvalidBankException {
         String name;
         double interestRate = 0;
         Bank bank;
@@ -33,7 +33,7 @@ public class BankService {
             }
         } while (true);
         banks.add(new Bank(name, interestRate));
-        return new Bank(name, interestRate);
+        //return new Bank(name, interestRate);
     }
     public Bank findByName(String name, ArrayList<Bank> banks) {
         for(Bank bank : banks) {

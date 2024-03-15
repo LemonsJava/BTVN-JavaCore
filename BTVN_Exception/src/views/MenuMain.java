@@ -25,7 +25,8 @@ public class MenuMain {
         System.out.println("5. Xem danh sach ngan hang");
         System.out.println("6. Xem danh sach so tiet kiem theo ten khach hang");
         System.out.println("7. Xem danh sach so tiet kiem theo so tien da gui");
-        System.out.println("8. Thoat chuong trinh");
+        System.out.println("8. Xem danh sach tong so tien da gui cua khach hang");
+        System.out.println("9. Thoat chuong trinh");
     }
 
     public void run(Scanner scanner, ArrayList<Customer> customers, ArrayList<Bank> banks, ArrayList<SavingAccount> savingAccounts) throws InvalidCustomerException, InvalidBankException, MaxSavingsAccountException, InvalidSAvingAccountException {
@@ -48,7 +49,7 @@ public class MenuMain {
                 case MenuSeeMain.CREATE_NEW_CUSTOMER:
                     customerService.createCustomer(scanner, customers);
                     for(Customer customer : customers)
-                        System.out.println(customers);
+                        System.out.println(customer);
                     break;
                 case MenuSeeMain.CREATE_NEW_BANK:
                     BankService bankService = new BankService();
@@ -60,6 +61,9 @@ public class MenuMain {
                     }
                     else {
                         savingAccoutService.createSavingAccount(scanner, customers, banks, savingAccounts);
+                    }
+                    for(SavingAccount  s : savingAccounts){
+                        System.out.println(s);
                     }
                     break;
                 case MenuSeeMain.DISPLAY_CUSTOMERS:

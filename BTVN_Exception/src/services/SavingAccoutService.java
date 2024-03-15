@@ -9,7 +9,7 @@ import entities.SavingAccount;
 import java.util.*;
 
 public class SavingAccoutService {
-    public SavingAccount createSavingAccount(Scanner scanner, ArrayList<Customer> customers, ArrayList<Bank> banks, ArrayList<SavingAccount> savingAccounts) throws MaxSavingsAccountException, InvalidSAvingAccountException {
+    public void createSavingAccount(Scanner scanner, ArrayList<Customer> customers, ArrayList<Bank> banks, ArrayList<SavingAccount> savingAccounts) throws MaxSavingsAccountException, InvalidSAvingAccountException {
         CustomerService customerService = new CustomerService();
         BankService bankService = new BankService();
         double balance = 0;
@@ -23,42 +23,49 @@ public class SavingAccoutService {
                 System.out.println("Khong tim thay khach hang nao co ten " + nameCustomer + ". Vui long nhap lai!");
                 continue;
             }
+            if (customer.getSavingAccounts().size() < 5 ) {
+                do {
+                    System.out.println("Moi nhap ten ngan hang: ");
+                    String nameBank = scanner.nextLine();
+                    bank = bankService.findByName(nameBank, banks);
+                    if (bank == null) {
+                        System.out.println("Khong tim thay ngan hang nao co ten " + nameBank + ". Vui long nhap lai!");
+                    }
+                }
+                while (bank == null);
+                do {
+                    try {
+                        System.out.print("Moi nhap so tien ban muon gui tiet kiem: ");
+                        balance = Double.parseDouble(scanner.nextLine());
+                        if (balance > 0) {
+                            break;
+                        } else {
+                            System.out.println("So tien ban muon gui tiet kiem phai > 0");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Vui long nhap so!!!");
+                    }
+                } while (true);
+                System.out.println("Ban da tao so tiet kiem thanh cong!");
+                customer.addSavingsAccount(new SavingAccount(customer, bank, balance));
+                savingAccounts.add(new SavingAccount(customer, bank, balance));
+            }
+            else {
+                System.out.println("Ban da tao toi da so tiet kiem!");
+                break;
+            }
         }
         while (customer == null);
-        do {
-            System.out.println("Moi nhap ten ngan hang: ");
-            String nameBank = scanner.nextLine();
-            bank = bankService.findByName(nameBank, banks);
-            if (bank == null) {
-                System.out.println("Khong tim thay ngan hang nao co ten " + nameBank + ". Vui long nhap lai!");
-            }
-        }
-        while (bank == null);
-        do {
-            try {
-                System.out.print("Moi nhap so tien ban muon gui tiet kiem: ");
-                balance = Double.parseDouble(scanner.nextLine());
-                if (balance > 0) {
-                    break;
-                } else {
-                    System.out.println("So tien ban muon gui tiet kiem phai > 0");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Vui long nhap so!!!");
-            }
-        } while (true);
-        System.out.println("Ban da tao so tiet kiem thanh cong!");
-        customer.addSavingsAccount(new SavingAccount(customer, bank, balance));
-        savingAccounts.add(new SavingAccount(customer, bank, balance));
-        return new SavingAccount(customer, bank, balance);
+
+        //return new SavingAccount(customer, bank, balance);
     }
 
 
 
     public void sortByNameCustomer(ArrayList<SavingAccount> savingAccounts){
-        ArrayList<SavingAccount> result = new ArrayList<>();
+        ArrayList<SavingAccount> result = savingAccounts;
 
-        Collections.sort(result, new Comparator<>() {
+        Collections.sort(result, new Comparator<SavingAccount>() {
             @Override
             public int compare(SavingAccount o1, SavingAccount o2) {
                 return o1.getCustomer().getLastName().compareTo(o2.getCustomer().getLastName());
@@ -70,8 +77,8 @@ public class SavingAccoutService {
     }
 
     public void sortByBalance(ArrayList<SavingAccount> savingAccounts) {
-        ArrayList<SavingAccount> result = new ArrayList<>();
-        Collections.sort(result, new Comparator<>() {
+        ArrayList<SavingAccount> result = savingAccounts;
+        Collections.sort(result, new Comparator<SavingAccount>() {
             @Override
             public int compare(SavingAccount o1, SavingAccount o2) {
                 return Double.compare(o1.getBalance(), o2.getBalance());
