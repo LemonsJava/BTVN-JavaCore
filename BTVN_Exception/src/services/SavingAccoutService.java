@@ -23,16 +23,18 @@ public class SavingAccoutService {
                 System.out.println("Khong tim thay khach hang nao co ten " + nameCustomer + ". Vui long nhap lai!");
                 continue;
             }
-            if (customer.getSavingAccounts().size() < 5 ) {
-                do {
-                    System.out.println("Moi nhap ten ngan hang: ");
-                    String nameBank = scanner.nextLine();
-                    bank = bankService.findByName(nameBank, banks);
-                    if (bank == null) {
-                        System.out.println("Khong tim thay ngan hang nao co ten " + nameBank + ". Vui long nhap lai!");
-                    }
+            do {
+                System.out.println("Moi nhap ten ngan hang: ");
+                String nameBank = scanner.nextLine();
+                bank = bankService.findByName(nameBank, banks);
+                if (bank == null) {
+                    System.out.println("Khong tim thay ngan hang nao co ten " + nameBank + ". Vui long nhap lai!");
+                    continue;
                 }
-                while (bank == null);
+                int count = 0;
+            }
+            while (bank == null);
+            if (customer.getSavingAccounts().size() < 5 ) {
                 do {
                     try {
                         System.out.print("Moi nhap so tien ban muon gui tiet kiem: ");
@@ -47,7 +49,7 @@ public class SavingAccoutService {
                     }
                 } while (true);
                 System.out.println("Ban da tao so tiet kiem thanh cong!");
-                customer.addSavingsAccount(new SavingAccount(customer, bank, balance));
+                //customer.addSavingsAccount(new SavingAccount(customer, bank, balance));
                 savingAccounts.add(new SavingAccount(customer, bank, balance));
             }
             else {

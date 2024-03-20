@@ -15,7 +15,7 @@ public class SavingAccount {
         this.customer = customer;
         this.bank = bank;
         this.balance = balance;
-        //customer.addSavingsAccount(this);
+        customer.addSavingsAccount(this);
     }
 
     public Customer getCustomer() {

@@ -90,11 +90,11 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "id='" + getId() + '\'' +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", phoneNumber=" + phoneNumber +
-                ", customerType=" + typeCustomer +
+                ", customerType=" + typeCustomer.value +
                 //", savingAccounts=" + savingAccounts +
                 '}';
     }
